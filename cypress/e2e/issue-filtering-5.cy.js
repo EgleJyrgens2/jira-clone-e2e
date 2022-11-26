@@ -11,7 +11,7 @@
 
 describe('Issue filtering', () => {
   beforeEach(() => {
-    cy.visit('/');
+    cy.visit('https://jira.ivorreic.com/');
   });
 
   it('Should filter issues by title', () => {

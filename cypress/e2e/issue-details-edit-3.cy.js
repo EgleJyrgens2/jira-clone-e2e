@@ -11,6 +11,8 @@
  *    Bonus: used random data generator library (faker.js)
  */
 
+
+
 /**
  * Workshop #16
  * Task #1
@@ -34,7 +36,7 @@
 describe('Issue details editing', () => {
   beforeEach(() => {
     cy.visit('/');
-    cy.url().should('eq', 'http://34.247.67.214:8080/project').then((url) => {
+    cy.url().should('eq', 'https://jira.ivorreic.com').then((url) => {
       cy.visit(url + '/board');
       cy.contains('This is an issue of type: Task.').click();
     });
@@ -107,6 +109,11 @@ describe('Issue details editing', () => {
 
     cy.contains('This is an issue of type: Task.').should('not.exist');
 
+  });
+
+  it.only('Regex', () => {
+    getIssueDetailsModal ();
+    cy.get ('[data-testid = "select:reporter"]').invoke('text').should('match', /^[A-Za-z ]*$/);
   });
 
   const getIssueDetailsModal = () => cy.get('[data-testid="modal:issue-details"]');
