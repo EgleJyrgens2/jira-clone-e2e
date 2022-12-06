@@ -69,7 +69,20 @@ describe('Issue details editing', () => {
       cy.get('[data-testid="select-option:Medium"]').click();
       cy.get('[data-testid="select:priority"]').should('have.text', 'Medium');
     });
+
+    const dataForVerificationWithContains = [
+      ['[data-testid="select:type"]', 'Story'],
+      ['[data-testid="select:assignees"]', 'Baby Yoda'],
+      ['[data-testid="select:assignee"]', 'Lord Gaben']
+    ]
+
+    const dataForVerificationByText = [
+      ['[data-testid="select:status"]', 'Done'],
+      ['[data-testid="select:reporter"]', 'Pickle Rick'],
+      ['[data-testid="select:preority"]', 'Medium'],
+    ]
   });
+
 
   it('Should update title, description successfully', () => {
     const title = 'TEST_TITLE';
