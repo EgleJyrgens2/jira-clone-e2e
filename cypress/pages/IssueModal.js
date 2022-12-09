@@ -4,10 +4,18 @@ class IssueModal {
         this.issueModal = '[data-testid="modal:issue-create"]';
         this.title = 'input[name="title"]';
         this.issueType = '[data-testid="select:type"]';
-        this.descriptionField = '.ql-editor';
+        this.iconStory = '[data-testid="icon:story"]';
+        this.issueTypeStory = '[data-testid="select-option:Story"]';
+        this.issueDescription = '.ql-editor';
         this.assignee = '[data-testid="select:userIds"]';
-        this.backlogList = '[data-testid="board-list:backlog"]';
+        this.assigneeLordGaben = '[data-testid="select-option:Lord Gaben"]';
         this.issuesList = '[data-testid="list-issue"]';
+        this.issueBacklog = '[data-testid="board-list:backlog';
+        this.trashIcon = '[data-testid="icon:trash"]';
+        this.modalConfirm = '[data-testid="modal:confirm"]';
+        this.iconClose = '[data-testid="icon:close"]';
+        this.deleteButton = 'button'
+        
     }
 
     getIssueModal() {
@@ -57,6 +65,23 @@ class IssueModal {
                 .contains(issueDetails.title);
             cy.get(`[data-testid="avatar:${issueDetails.assignee}"]`).should('be.visible');
         });
+    }
+
+    deleteIssue() {
+        cy.contains('ws22 deleting issue').click();
+        cy.get(this.trashIcon).click();
+        cy.get(this.deleteButton).contains('Delete issue').click();
+        cy.get(this.modalConfirm).should('not.exist');
+        cy.contains('ws22 deleting issue').should('not.exist')
+    }
+
+    cancelDelete() {
+        cy.contains('ws22 deleting issue').click();
+        cy.get(this.trashIcon).click();
+        cy.get(this.modalConfirm).contains('Cancel').click();
+        cy.get(this.modalConfirm).should('not.exist');
+        cy.get(this.iconClose).click();
+        cy.contains('ws22 deleting issue').should('exist');
     }
 }
 

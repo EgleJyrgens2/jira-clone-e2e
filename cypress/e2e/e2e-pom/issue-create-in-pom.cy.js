@@ -12,6 +12,7 @@ describe('Issue create', () => {
     cy.url().should('eq', 'https://jira.ivorreic.com/project').then((url) => {
       cy.wait('@currentUserApiRequest')
       cy.visit(url + '/settings?modal-issue-create=true');
+      
     });
   });
 
