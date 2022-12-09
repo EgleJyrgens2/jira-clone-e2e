@@ -7,11 +7,10 @@ describe('Deleting issue', () => {
       cy.url().should('eq', 'https://jira.ivorreic.com/project/').then((url) => {
           cy.wait('@currentUserApiRequest')
       });
-      createIssue(issueDetails)
-      //cy.get('[data-testid="icon:plus"]').click();
-      //cy.wait(2000);
-      //cy.get('input[name="title"]').type('ws22 deleting issue');
-      //cy.get('button[type="submit"]').click()
+      cy.get('[data-testid="icon:plus"]').click();
+      cy.wait(2000);
+      cy.get('input[name="title"]').type('ws22 deleting issue');
+      cy.get('button[type="submit"]').click()
   });
     
 
